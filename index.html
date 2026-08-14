@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TVERP — Phần mềm Quản lý Bán hàng nội bộ</title>
+<link rel="stylesheet" href="assets/lib/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="assets/css/tverp.css">
+<link rel="stylesheet" href="assets/css/print.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b2545'/%3E%3Ctext x='16' y='22' font-size='15' font-family='Segoe UI' font-weight='700' fill='%23fff' text-anchor='middle'%3ETV%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- ======================= ĐĂNG NHẬP ======================= -->
+<div id="manHinhDangNhap">
+  <div class="auth-box">
+    <div class="auth-logo"><i class="bi bi-buildings"></i></div>
+    <div class="auth-title">PHẦN MỀM QUẢN LÝ BÁN HÀNG NỘI BỘ</div>
+    <div class="auth-sub">EMC • AA • THÁI PHONG • TẢN VIÊN</div>
+    <form id="fLogin" autocomplete="off">
+      <div class="fld mb12"><label>Tên đăng nhập</label>
+        <input type="text" id="uTen" value="admin" autofocus></div>
+      <div class="fld mb12"><label>Mật khẩu</label>
+        <input type="password" id="uMk" value="" placeholder="Nhập mật khẩu"></div>
+      <div class="row mb12" style="justify-content:space-between">
+        <label class="row" style="gap:6px;font-size:13px;cursor:pointer" title="Chỉ lưu tên đăng nhập trên máy này, không lưu mật khẩu, không tự động đăng nhập">
+          <input type="checkbox" id="uNho"> Ghi nhớ tên đăng nhập</label>
+        <span class="link small" id="uQuen">Quên mật khẩu?</span>
+      </div>
+      <button class="btn primary lg" type="submit" style="width:100%;justify-content:center">
+        <i class="bi bi-box-arrow-in-right"></i> Đăng nhập</button>
+    </form>
+    <!-- KHÔNG hiển thị mật khẩu ở bất kỳ đâu trên giao diện. Tài khoản và mật
+         khẩu ban đầu chỉ được ghi trong tài liệu bàn giao riêng cho người quản
+         trị, không in lên màn hình đăng nhập. -->
+    <div class="auth-hint">Liên hệ quản trị hệ thống nếu chưa có tài khoản đăng nhập.</div>
+  </div>
+</div>
+
+<!-- ======================= ỨNG DỤNG ======================= -->
+<div class="shell hide" id="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark"><i class="bi bi-buildings"></i></span>
+      <span class="brand-text">
+        <strong>TVERP</strong>
+        <small>Phần mềm Quản lý Bán hàng nội bộ</small>
+      </span>
+    </div>
+
+    <div class="sb-donvi" id="sbDonVi" title="Đơn vị đang làm việc — bấm để chuyển">
+      <span class="nhan">Đơn vị đang làm việc</span>
+      <span class="ten" id="sbDonViTen">—</span>
+    </div>
+
+    <div class="nav-search">
+      <i class="bi bi-search"></i>
+      <input type="text" id="timMenu" placeholder="Tìm nhanh chức năng..." autocomplete="off" spellcheck="false">
+      <kbd class="phim-tat">Ctrl + K</kbd>
+    </div>
+    <nav class="nav" id="nav"></nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn" id="btnRail" title="Thu gọn / mở rộng thanh điều hướng"><i class="bi bi-list"></i></button>
+      <div class="crumb" id="crumb"></div>
+      <div class="topbar-right">
+        <button class="icon-btn" id="btnHelp" title="Hướng dẫn nhanh (F1)"><i class="bi bi-question-circle"></i></button>
+        <div class="cty-badge" id="ctyBadge" title="Đơn vị đang làm việc — bấm để đổi tại Trang chủ"></div>
+        <div class="user-chip" id="userChip">
+          <span class="avatar">TA</span><small id="uName">Nguyễn Tuấn Anh</small>
+          <i class="bi bi-chevron-down" style="font-size:11px;color:var(--ink-3)"></i>
+        </div>
+      </div>
+    </header>
+    <div class="workspace" id="ws"></div>
+  </div>
+</div>
+
+<div id="printHost" class="hide"></div>
+<div id="toasts"></div>
+<div id="busy"><div class="sp"></div></div>
+
+<script src="assets/lib/xlsx.full.min.js"></script>
+<script src="assets/js/seed.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/mod-tailieu.js"></script>
+<script src="assets/js/mod-xoa.js"></script>
+<script src="assets/js/mod-excel.js"></script>
+<script src="assets/js/mod-hangloat.js"></script>
+<script src="assets/js/mod-chon.js"></script>
+<script src="assets/js/mod-danhmuc.js"></script>
+<script src="assets/js/mod-khachhang.js"></script>
+<script src="assets/js/mod-master.js"></script>
+<script src="assets/js/mod-chungtu.js"></script>
+<script src="assets/js/mod-chungtu2.js"></script>
+<script src="assets/js/mod-taichinh.js"></script>
+<script src="assets/js/mod-nhansu.js"></script>
+<script src="assets/js/mod-giavon.js"></script>
+<script src="assets/js/mod-kho.js"></script>
+<script src="assets/js/mod-nhaplichsu.js"></script>
+<script src="assets/js/mod-baocao.js"></script>
+<script src="assets/js/mod-suatructiep.js"></script>
+<script src="assets/js/mod-hethong.js"></script>
+<script src="assets/js/mod-gopdl.js"></script>
+<script src="assets/js/mod-xuatvp.js"></script>
+<script src="assets/js/mod-nhapdl.js"></script>
+<script src="assets/js/mod-banggia.js"></script>
+<script src="assets/js/mod-modulegia.js"></script>
+<script src="assets/js/mod-nhaphang.js"></script>
+<script src="assets/js/mod-lienhoan.js"></script>
+<script src="assets/js/mod-saoluu.js"></script>
+<script src="assets/js/mod-trangchu.js"></script>
+<script src="assets/js/mod-gopvon.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
